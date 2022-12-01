@@ -3,26 +3,20 @@ import qualified Data.List
 readLines :: FilePath -> IO [String]
 readLines = fmap lines . readFile
 
-convertToInts :: [String] -> [[Int]] -> [[Int]]
-convertToInts [] elves =
-  elves
-convertToInts contents [] =
-  convertToInts contents [[]]
-convertToInts ("":contents) elves =
-  convertToInts contents $ []:elves
-convertToInts (line:contents) (elf:elves) =
-  convertToInts contents $ ((read line) : elf):elves
-
-sumElves :: [[Int]] -> [Int]
-sumElves elves =
-  map sum elves
+splitter :: [Int] -> String -> [Int]
+splitter [] _     = [0]
+splitter acc ""   = 0:acc
+splitter (x:xs) s = (x + read s) : xs
 
 main :: IO ()
 main = do
+  simpleContents <- readLines ("inputSimple.txt")
   contents <- readLines ("input.txt")
-  let elves = convertToInts contents []
-      calElves = sumElves elves
-      sortedElves = reverse $ Data.List.sort calElves
+  let simpleElves = Data.List.sortBy (flip compare) $ foldl splitter [] simpleContents
+      elves = Data.List.sortBy (flip compare) $ foldl splitter [] contents
     in do
-    print $ maximum calElves
-    print $ sum $ take 3 sortedElves
+    print $ sum $ take 1 simpleElves
+    print $ sum $ take 3 simpleElves
+
+    print $ sum $ take 1 elves
+    print $ sum $ take 3 elves

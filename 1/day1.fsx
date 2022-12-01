@@ -6,12 +6,6 @@ let splitter (acc : list<int>) (line : string) : list<int> =
     | _, [] | "", _  -> 0::acc
     | s, x::xs -> (x + int s) :: xs
 
-//let splitter (acc : list<int>) (line : string) : list<int> =
-//    match line, acc with
-//    | _, []    -> [0]
-//    | "", acc  -> 0::acc
-//    | s, x::xs -> (x + int s) :: xs
-
 let readFile (filename : string) =
     filename
     |> File.ReadLines

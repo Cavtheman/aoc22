@@ -10,8 +10,8 @@ splitter (x:xs) s = (x + read s) : xs
 
 main :: IO ()
 main = do
-  simpleContents <- readLines ("inputSimple.txt")
-  contents <- readLines ("input.txt")
+  simpleContents <- readLines "inputSimple.txt"
+  contents <- readLines "input.txt"
   let simpleElves = Data.List.sortBy (flip compare) $ foldl splitter [] simpleContents
       elves = Data.List.sortBy (flip compare) $ foldl splitter [] contents
     in do

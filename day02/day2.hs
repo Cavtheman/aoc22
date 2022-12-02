@@ -49,10 +49,9 @@ main = do
   simpleScoreList <- return $ simpleWordsList >>= (\x -> return $ map (\y -> rps (y!!0) (y!!1)) x)
   simpleScore <- return $ simpleScoreList >>= (\x -> return (sum x))
 
-  wordsList       <- return $ mapM (\x -> mapM (\y -> convertToRps2 (words x !! 0) (words x !! 1) y) $ words x) contents
+  wordsList <- return $ mapM (\x -> mapM (\y -> convertToRps2 (words x !! 0) (words x !! 1) y) $ words x) contents
   scoreList <- return $ wordsList >>= (\x -> return $ map (\y -> rps (y!!0) (y!!1)) x)
   score <- return $ scoreList >>= (\x -> return (sum x))
 
-  --print simpleWordsList
   print simpleScore
   print score

@@ -22,12 +22,12 @@ makeBags l = map (halveList . map (priority)) l
 findEquals :: [Int] -> [Int] -> Int
 findEquals (x:_) s2 | elem x s2 = x
 findEquals (_:xs) s2 = findEquals xs s2
-findEquals _ _ = -100
+findEquals _ _ = -100 -- I should use the Maybe type but I really can't be assed
 
 findEquals2 :: [Int] -> [Int] -> [Int] -> Int
 findEquals2 (x:_) s2 s3 | elem x s2 && elem x s3 = x
 findEquals2 (_:xs) s2 s3 = findEquals2 xs s2 s3
-findEquals2 _ _ _ = -100
+findEquals2 _ _ _ = -100 -- I should use the Maybe type but I really can't be assed
 
 getBadges :: [[Int]] -> [Int]
 getBadges [] = []

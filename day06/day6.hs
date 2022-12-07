@@ -1,5 +1,3 @@
-import Data.List
-
 readLines :: FilePath -> IO [String]
 readLines = fmap lines . readFile
 

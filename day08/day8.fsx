@@ -42,8 +42,6 @@ let resultArr = Array.init shape1 (fun i ->
                                    Array.init shape2 (fun j ->
                                                       if isVisible forest i j then 1 else 0))
 let numVisible = Array.map Array.sum resultArr |> Array.sum
-//let views = Array2D.init shape1 shape2 (fun i j -> findView forest i j)
-
 let views = Array.init shape1 (fun i ->
                                Array.init shape2 (fun j ->
                                                   findView forest i j))

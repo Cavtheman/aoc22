@@ -43,6 +43,5 @@ main = do
   contents <- readLines "input.txt"
   let commands = linesToCommands contents
   let headLocations = allHeadMoves commands (0,0)
-  let tailLocations = scanl moveTail (0,0) headLocations
-  print $ length $ nub $ tailLocations -- part 1
+  print $ length $ nub $ simTails headLocations 1 -- part 1
   print $ length $ nub $ simTails headLocations 9 -- part 2

@@ -256,3 +256,5 @@ TSWLatexianTemp*
 FSharp.Core.dll
 *.exe
 *.dll
+
+.fake
